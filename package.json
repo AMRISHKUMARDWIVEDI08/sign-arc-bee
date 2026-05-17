@@ -8,7 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@turnkey/sdk-browser": "latest",
+    "@turnkey/react-wallet-kit": "latest",
     "@turnkey/http": "latest",
     "next": "latest",
     "react": "latest",
@@ -17,4 +17,3 @@
     "framer-motion": "latest"
   }
 }
-
