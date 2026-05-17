@@ -1,68 +1,42 @@
 "use client";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
-const TRIVIA_QUESTIONS = [
-  { id: 1, text: "is arc network built for modular embedded wallets?", answer: true },
-  { id: 2, text: "does turnkey require traditional passwords for users?", answer: false },
-  { id: 3, text: "can you sign web3 transactions with a device passkey?", answer: true }
-];
-
-export default function CryptoTrivia({ onBack }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [score, setScore] = useState(0);
-
-  const handleSwipe = (direction) => {
-    const currentQuestion = TRIVIA_QUESTIONS[currentIndex];
-    const userAnswer = direction === "right"; // right = true, left = false
-
-    if (userAnswer === currentQuestion.answer) {
-      setScore((prev) => prev + 10);
-    }
-
-    if (currentIndex < TRIVIA_QUESTIONS.length - 1) {
-      setCurrentIndex((prev) => prev + 10);
-    } else {
-      alert(`game over! your final score: ${score + (userAnswer === currentQuestion.answer ? 10 : 0)} bee`);
-      setCurrentIndex(0);
-      setScore(0);
-      onBack();
-    }
-  };
-
-  if (currentIndex >= TRIVIA_QUESTIONS.length) return null;
+export default function Home() {
+  const [balance, setBalance] = useState("0 BEE");
+  const [address, setAddress] = useState("0x000...0000");
 
   return (
-    <div className="w-full max-w-md bg-[#1C1C1C] rounded-2xl p-6 border border-gray-800 shadow-2xl flex flex-col items-center justify-between min-h-[400px]">
-      {/* Game Header */}
-      <div className="w-full flex justify-between items-center mb-6">
-        <span className="text-xs text-gray-500 font-bold uppercase tracking-wider">BEE TRIVIA</span>
-        <span className="text-sm font-extrabold text-[#FFD700] bg-[#121212] px-3 py-1 rounded-lg border border-gray-800">{score} XP</span>
+    <div style={{ minHeight: "100vh", backgroundColor: "#121212", color: "white", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "space-between", padding: "24px", fontFamily: "sans-serif" }}>
+      {/* Top Bar */}
+      <div style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px 0" }}>
+        <h1 style={{ fontSize: "20px", fontWeight: "bold", color: "#FFD700", margin: 0 }}>SIGN ARC BEE 🐝</h1>
+        <span style={{ backgroundColor: "#1E1E1E", fontSize: "12px", padding: "4px 12px", borderRadius: "9999px", color: "#a3a3a3", border: "1px solid #262626" }}>Arc Network</span>
       </div>
 
-      {/* Question Card Box */}
-      <div className="w-full bg-[#121212] rounded-xl p-8 border border-gray-800 text-center flex-1 flex items-center justify-center mb-6 min-h-[180px]">
-        <p className="text-lg font-medium text-gray-200 tracking-wide">
-          {TRIVIA_QUESTIONS[currentIndex].text}
-        </p>
+      {/* Main Dashboard Box */}
+      <div style={{ width: "100%", maxWidth: "400px", backgroundColor: "#1C1C1C", borderRadius: "16px", padding: "24px", border: "1px solid #262626", flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", margin: "16px 0" }}>
+        <p style={{ color: "#a3a3a3", fontSize: "14px", marginBottom: "4px", textAlign: "center" }}>Available Balance</p>
+        <h2 style={{ fontSize: "36px", fontWeight: "800", color: "#FFD700", textAlign: "center", marginBottom: "24px", letterSpacing: "-0.05em" }}>{balance}</h2>
+
+        {/* Copy Address Row */}
+        <div style={{ backgroundColor: "#121212", borderRadius: "12px", padding: "12px", display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "24px", border: "1px solid #262626" }}>
+          <span style={{ fontSize: "12px", color: "#737373", fontFamily: "monospace" }}>{address}</span>
+          <button style={{ fontSize: "12px", color: "#FFD700", backgroundColor: "#1C1C1C", padding: "4px 12px", borderRadius: "8px", border: "1px solid #404040", fontWeight: "500" }}>Copy</button>
+        </div>
+
+        {/* Action Button */}
+        <button style={{ width: "100%", backgroundColor: "#FFD700", color: "black", fontWeight: "bold", padding: "16px", borderRadius: "12px", border: "none", fontSize: "16px", cursor: "pointer" }}>
+          Connect Fingerprint Passkey
+        </button>
       </div>
 
-      {/* Control Instruction Buttons */}
-      <div className="w-full grid grid-cols-2 gap-4">
-        <button 
-          onClick={() => handleSwipe("left")}
-          className="bg-transparent border border-red-500/30 text-red-400 font-bold py-3 rounded-xl active:bg-red-950/20 active:scale-95 transition-transform text-sm tracking-wide"
-        >
-          ← FALSE (Swipe Left)
-        </button>
-        <button 
-          onClick={() => handleSwipe("right")}
-          className="bg-transparent border border-green-500/30 text-green-400 font-bold py-3 rounded-xl active:bg-green-950/20 active:scale-95 transition-transform text-sm tracking-wide"
-        >
-          TRUE (Swipe Right) →
-        </button>
+      {/* Bottom Swipe Indicator */}
+      <div style={{ width: "100%", maxWidth: "400px", display: "flex", justifyContent: "flex-end", alignItems: "center", padding: "16px 0", borderTop: "1px solid #1f1f1f" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <span style={{ fontSize: "12px", color: "#525252", fontWeight: "bold", letterSpacing: "0.1em" }}>SWIPE FOR GAME</span>
+          <span style={{ color: "#FFD700", fontSize: "18px", fontWeight: "bold" }}>→</span>
+        </div>
       </div>
     </div>
   );
-  }
-    
+}
