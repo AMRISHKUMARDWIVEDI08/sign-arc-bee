@@ -4,6 +4,42 @@ import { useState } from "react";
 export default function Home() {
   const [balance, setBalance] = useState("0 BEE");
   const [address, setAddress] = useState("0x000...0000");
+  const [status, setStatus] = useState("");
+
+  const connectPasskey = async () => {
+    try {
+      setStatus("Initializing Passkey...");
+      const challenge = new Uint8Array(32);
+      window.crypto.getRandomValues(challenge);
+      
+      const publicKeyCredentialCreationOptions = {
+        challenge: challenge,
+        rp: { name: "Sign Arc Bee", id: window.location.hostname },
+        user: {
+          id: Uint8Array.from("user123", c => c.charCodeAt(0)),
+          name: "arc_builder",
+          displayName: "Arc Builder",
+        },
+        pubKeyCredParams: [{ alg: -7, type: "public-key" }],
+        timeout: 60000,
+        authenticatorSelection: { residentKey: "required", userVerification: "required" }
+      };
+
+      setStatus("Please scan fingerprint...");
+      const credential = await navigator.credentials.create({
+        publicKey: publicKeyCredentialCreationOptions
+      });
+
+      if (credential) {
+        setStatus("Passkey Securely Linked!");
+        setAddress("0x71C...Bbee");
+        setBalance("100 BEE");
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus("Passkey canceled or unsupported");
+    }
+  };
 
   return (
     <>
@@ -20,7 +56,7 @@ export default function Home() {
 
       <div style={{ minHeight: "100vh", width: "100%", backgroundColor: "#FFD700", color: "#121212", display: "flex", flexDirection: "column", alignItems: "center", padding: "40px 20px", boxSizing: "border-box", fontFamily: "sans-serif" }}>
         
-        {/* Top Bar - Color changed to SOLID BLACK */}
+        {/* Top Bar */}
         <div style={{ width: "100%", maxWidth: "800px", display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "40px" }}>
           <h1 style={{ fontSize: "32px", fontWeight: "900", color: "#121212", margin: 0, letterSpacing: "-0.03em" }}>SIGN ARC BEE 🐝</h1>
           <span style={{ backgroundColor: "#121212", fontSize: "14px", padding: "8px 16px", borderRadius: "20px", color: "#FFD700", fontWeight: "700" }}>Arc Network</span>
@@ -29,7 +65,9 @@ export default function Home() {
         {/* Main Dashboard Box */}
         <div style={{ width: "100%", maxWidth: "800px", backgroundColor: "#1E3A8A", borderRadius: "32px", padding: "60px 40px", border: "2px solid #121212", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", boxSizing: "border-box", boxShadow: "0px 25px 50px rgba(0,0,0,0.3)", margin: "auto 0" }}>
           <p style={{ color: "#93C5FD", fontSize: "20px", margin: "0 0 12px 0", fontWeight: "600" }}>Available Balance</p>
-          <h2 style={{ fontSize: "80px", fontWeight: "900", color: "#FFD700", margin: "0 0 40px 0", letterSpacing: "-0.04em" }}>{balance}</h2>
+          <h2 style={{ fontSize: "80px", fontWeight: "900", color: "#FFD700", margin: "0 0 10px 0", letterSpacing: "-0.04em" }}>{balance}</h2>
+          
+          {status && <p style={{ color: "#FFD700", fontSize: "14px", margin: "0 0 30px 0", backgroundColor: "#172554", padding: "6px 14px", borderRadius: "10px", fontFamily: "monospace" }}>{status}</p>}
 
           {/* Copy Address Row */}
           <div style={{ width: "100%", backgroundColor: "#172554", borderRadius: "16px", padding: "20px", display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "45px", border: "1px solid #3b82f6", boxSizing: "border-box" }}>
@@ -37,8 +75,11 @@ export default function Home() {
             <button style={{ fontSize: "14px", color: "#FFD700", backgroundColor: "#1E3A8A", padding: "10px 24px", borderRadius: "12px", border: "1px solid #3b82f6", fontWeight: "700" }}>Copy</button>
           </div>
 
-          {/* ACTION BUTTON - TEXT COLOR SIGNED TO SOLID BLACK (#121212) */}
-          <button style={{ width: "100%", backgroundColor: "#FFD700", color: "#121212", fontWeight: "900", padding: "26px", borderRadius: "20px", border: "3px solid #121212", fontSize: "24px", cursor: "pointer", letterSpacing: "0.02em", boxShadow: "0px 8px 0px #121212" }}>
+          {/* Action Button */}
+          <button 
+            onClick={connectPasskey}
+            style={{ width: "100%", backgroundColor: "#FFD700", color: "#121212", fontWeight: "900", padding: "26px", borderRadius: "20px", border: "3px solid #121212", fontSize: "24px", cursor: "pointer", letterSpacing: "0.02em", boxShadow: "0px 8px 0px #121212" }}
+          >
             Connect Fingerprint Passkey
           </button>
         </div>
@@ -54,5 +95,5 @@ export default function Home() {
       </div>
     </>
   );
-          }
-          
+  }
+  
