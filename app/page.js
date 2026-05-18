@@ -1,18 +1,14 @@
 "use client";
-import { useState, useEffect } from "react";
-import { TurnkeyClient } from "@turnkey/http";
+import { useState } from "react";
 
 export default function Home() {
   const [balance, setBalance] = useState("0 BEE");
   const [address, setAddress] = useState("0x000...0000");
   const [status, setStatus] = useState("");
 
-  // Real Web3 Wallet Passkey Authentication Function
   const connectPasskey = async () => {
     try {
       setStatus("Initializing Passkey...");
-      
-      // Native WebAuthn Browser API Call for Fingerprint/FaceID
       const challenge = new Uint8Array(32);
       window.crypto.getRandomValues(challenge);
       
@@ -36,7 +32,6 @@ export default function Home() {
 
       if (credential) {
         setStatus("Passkey Securely Linked!");
-        // Dynamic wallet address mapping
         setAddress("0x71C...Bbee");
         setBalance("100 BEE");
       }
@@ -80,7 +75,7 @@ export default function Home() {
             <button style={{ fontSize: "14px", color: "#FFD700", backgroundColor: "#1E3A8A", padding: "10px 24px", borderRadius: "12px", border: "1px solid #3b82f6", fontWeight: "700" }}>Copy</button>
           </div>
 
-          {/* ACTION BUTTON - Triggers Real Fingerprint Prompt */}
+          {/* Action Button */}
           <button 
             onClick={connectPasskey}
             style={{ width: "100%", backgroundColor: "#FFD700", color: "#121212", fontWeight: "900", padding: "26px", borderRadius: "20px", border: "3px solid #121212", fontSize: "24px", cursor: "pointer", letterSpacing: "0.02em", boxShadow: "0px 8px 0px #121212" }}
@@ -100,5 +95,5 @@ export default function Home() {
       </div>
     </>
   );
-        }
-        
+            }
+      
