@@ -51,14 +51,25 @@ export default function Home() {
 
       <div style={{ height: "100vh", width: "100vw", backgroundColor: "#FFD700", color: "#121212", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "space-between", padding: "12px 20px", boxSizing: "border-box", fontFamily: "sans-serif" }}>
         
-        {/* Top Header Section with Original Uncompressed ARC Logo */}
+        {/* Top Header Section with Real Balanced Arc Gradient Icon */}
         <div style={{ width: "100%", maxWidth: "480px", display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "4px" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-            <img 
-              src="https://raw.githubusercontent.com/AMRISHKUMARDWIVEDI08/arc-engine-router/main/logo.png" 
-              alt="ARC Logo" 
-              style={{ width: "40px", height: "40px", objectFit: "contain", imageRendering: "auto", display: "block" }} 
-            />
+          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            
+            {/* Precise High-Fidelity Arc Vector Asset */}
+            <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ display: "block" }}>
+              <defs>
+                <linearGradient id="arcCoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#2E3192" />
+                  <stop offset="60%" stopColor="#662D91" />
+                  <stop offset="100%" stopColor="#D4145A" />
+                </linearGradient>
+              </defs>
+              <path 
+                d="M50 15 C30 15 20 45 20 85 C35 72 45 62 55 62 C65 62 80 62 80 85 C80 45 70 15 50 15 Z M50 32 C56 32 64 48 64 54 L36 54 C36 48 44 32 50 32 Z" 
+                fill="url(#arcCoreGradient)"
+              />
+            </svg>
+
             <h1 style={{ fontSize: "24px", fontWeight: "900", color: "#121212", margin: 0, letterSpacing: "-0.03em" }}>SIGN ARC BEE 🐝</h1>
           </div>
           <span style={{ backgroundColor: "#121212", fontSize: "10px", padding: "6px 12px", borderRadius: "20px", color: "#FFD700", fontWeight: "700", letterSpacing: "0.05em" }}>ARC NETWORK</span>
@@ -67,26 +78,22 @@ export default function Home() {
         {/* Real-Time Dashboard Card */}
         <div style={{ width: "100%", maxWidth: "480px", backgroundColor: "#1E3A8A", borderRadius: "24px", padding: "18px 20px", border: "3px solid #121212", display: "flex", flexDirection: "column", alignItems: "center", boxSizing: "border-box", boxShadow: "0px 8px 0px #121212" }}>
           
-          {/* Brand Partner Logos Badge Row */}
+          {/* Brand Partner Badge Row - Standard Sizing */}
           <div style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "14px", borderBottom: "2px dashed rgba(255,255,255,0.2)", paddingBottom: "12px" }}>
-            {/* Verified Turnkey Graphic Icon */}
-            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <img 
-                src="https://assets.coingecko.com/coins/images/34392/large/turnkey.jpeg?1704944983" 
-                alt="Turnkey" 
-                style={{ width: "20px", height: "20px", borderRadius: "6px", objectFit: "contain" }}
-              />
-              <span style={{ color: "#FFD700", fontSize: "12px", fontWeight: "800", letterSpacing: "0.05em" }}>TURNKEY</span>
+            
+            {/* Clean Turnkey Identity */}
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <span style={{ color: "#FFD700", fontSize: "11px", fontWeight: "900", letterSpacing: "0.08em" }}>TURNKEY</span>
             </div>
 
-            {/* Verified Circle Graphic Icon */}
-            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            {/* Circle Trademark Icon */}
+            <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
               <img 
                 src="https://assets.coingecko.com/coins/images/6319/large/USD_Coin_icon.png?1547042389" 
                 alt="Circle" 
-                style={{ width: "20px", height: "20px", objectFit: "contain" }}
+                style={{ width: "16px", height: "16px", objectFit: "contain" }}
               />
-              <span style={{ color: "#93C5FD", fontSize: "12px", fontWeight: "800", letterSpacing: "0.05em" }}>CIRCLE</span>
+              <span style={{ color: "#93C5FD", fontSize: "11px", fontWeight: "900", letterSpacing: "0.08em" }}>CIRCLE</span>
             </div>
           </div>
 
@@ -155,9 +162,9 @@ export default function Home() {
           )}
         </form>
 
-        <div style={{ fontSize: "10px", fontWeight: "800", color: "#1E3A8A", opacity: 0.7, marginBottom: "2px" }}>Arc House Ecosystem Builder v2.3</div>
+        <div style={{ fontSize: "10px", fontWeight: "800", color: "#1E3A8A", opacity: 0.7, marginBottom: "2px" }}>Arc House Ecosystem Builder v2.6</div>
       </div>
     </>
   );
-  }
-    
+                   }
+      
