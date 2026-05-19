@@ -51,14 +51,13 @@ export default function Home() {
 
       <div style={{ height: "100vh", width: "100vw", backgroundColor: "#FFD700", color: "#121212", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "space-between", padding: "12px 20px", boxSizing: "border-box", fontFamily: "sans-serif" }}>
         
-        {/* Top Header Section with Original ARC Logo */}
-        <div style={{ width: "100%", maxWidth: "480px", display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "2px" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            {/* Real Original ARC Logo Image from GitHub */}
+        {/* Top Header Section with Original Uncompressed ARC Logo */}
+        <div style={{ width: "100%", maxWidth: "480px", display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "4px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
             <img 
               src="https://raw.githubusercontent.com/AMRISHKUMARDWIVEDI08/arc-engine-router/main/logo.png" 
               alt="ARC Logo" 
-              style={{ width: "32px", height: "32px", objectFit: "contain" }} 
+              style={{ width: "40px", height: "40px", objectFit: "contain", imageRendering: "auto", display: "block" }} 
             />
             <h1 style={{ fontSize: "24px", fontWeight: "900", color: "#121212", margin: 0, letterSpacing: "-0.03em" }}>SIGN ARC BEE 🐝</h1>
           </div>
@@ -69,26 +68,25 @@ export default function Home() {
         <div style={{ width: "100%", maxWidth: "480px", backgroundColor: "#1E3A8A", borderRadius: "24px", padding: "18px 20px", border: "3px solid #121212", display: "flex", flexDirection: "column", alignItems: "center", boxSizing: "border-box", boxShadow: "0px 8px 0px #121212" }}>
           
           {/* Brand Partner Logos Badge Row */}
-          <div style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "12px", borderBottom: "1px dashed rgba(255,255,255,0.15)", paddingBottom: "10px" }}>
+          <div style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "14px", borderBottom: "2px dashed rgba(255,255,255,0.2)", paddingBottom: "12px" }}>
             {/* Verified Turnkey Graphic Icon */}
-            <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
               <img 
                 src="https://assets.coingecko.com/coins/images/34392/large/turnkey.jpeg?1704944983" 
                 alt="Turnkey" 
-                style={{ width: "16px", height: "16px", borderRadius: "4px" }}
-                onError={(e) => { e.target.style.display = 'none'; }}
+                style={{ width: "20px", height: "20px", borderRadius: "6px", objectFit: "contain" }}
               />
-              <span style={{ color: "#FFD700", fontSize: "11px", fontWeight: "800", letterSpacing: "0.05em" }}>TURNKEY</span>
+              <span style={{ color: "#FFD700", fontSize: "12px", fontWeight: "800", letterSpacing: "0.05em" }}>TURNKEY</span>
             </div>
 
             {/* Verified Circle Graphic Icon */}
-            <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
               <img 
                 src="https://assets.coingecko.com/coins/images/6319/large/USD_Coin_icon.png?1547042389" 
                 alt="Circle" 
-                style={{ width: "16px", height: "16px" }}
+                style={{ width: "20px", height: "20px", objectFit: "contain" }}
               />
-              <span style={{ color: "#93C5FD", fontSize: "11px", fontWeight: "800", letterSpacing: "0.05em" }}>CIRCLE</span>
+              <span style={{ color: "#93C5FD", fontSize: "12px", fontWeight: "800", letterSpacing: "0.05em" }}>CIRCLE</span>
             </div>
           </div>
 
@@ -157,9 +155,9 @@ export default function Home() {
           )}
         </form>
 
-        <div style={{ fontSize: "10px", fontWeight: "800", color: "#1E3A8A", opacity: 0.7, marginBottom: "2px" }}>Arc House Ecosystem Builder v2.2</div>
+        <div style={{ fontSize: "10px", fontWeight: "800", color: "#1E3A8A", opacity: 0.7, marginBottom: "2px" }}>Arc House Ecosystem Builder v2.3</div>
       </div>
     </>
   );
-    }
+  }
     
